@@ -5,7 +5,7 @@ A sleek, terminal based To-Do app build with Go!
 Perfect for those who love working in the command line and want a quick,no-fuss way to manage tasks.This app offers all essential task management fetaures in a minimalist, test-based environmnet🤩  
 
 
-## Features
+## 🛠️ Features
 
 - Persistant sile Storage
 - Date and Time support
@@ -13,14 +13,14 @@ Perfect for those who love working in the command line and want a quick,no-fuss 
 - Cross platform
 
 
-## Screenshots
+## 📸 Screenshots
 
 ![App Screenshot](ReadmeImgs/ss1.png)
 ![App Screenshot](ReadmeImgs/ss2.png)
 ![App Screenshot](ReadmeImgs/ss3.png)
 
 
-## Run Locally
+## ⚔️ Run Locally
 
 🧪 Clone the project
 
@@ -41,7 +41,7 @@ Perfect for those who love working in the command line and want a quick,no-fuss 
 ```
 
 
-## Lessons Learned
+## 👨🏻‍🏫 Lessons Learned
 
 - Project Structure
 - CLI Design
