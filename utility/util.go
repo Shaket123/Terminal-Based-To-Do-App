@@ -1,11 +1,11 @@
-package handlers
+package utility
 
 import(
   "strconv"
   "fmt"
 )
 
-func validateInput(inp string,flag *int,caller string) (err_found bool){
+func ValidateInput(inp string,flag *int,caller string) (err_found bool){
   inp_int,err := strconv.Atoi(inp)
   if(err != nil){
     err_found = true
@@ -21,9 +21,20 @@ func validateInput(inp string,flag *int,caller string) (err_found bool){
       err_found = true
     }
   }
-  
+
+  if(caller == "idscreen"){
+    if(inp_int<1000 || inp_int >9999){
+      err_found = true
+    }
+  }
+
   if(err_found){
-    fmt.Println("Invalid Input",inp)
+    if(caller == "idscreen"){
+      fmt.Println("Invalid ID",inp)
+    }else{
+      fmt.Println("Invalid Input",inp)
+    }
+    
   }
   *flag = inp_int
   return
