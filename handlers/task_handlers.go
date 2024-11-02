@@ -9,10 +9,10 @@ import (
   "math/rand"
 )
 
-var maindata []models.Data
+var Maindata []models.Data
 
 func Run() {
-  maindata = storage.LoadData()
+  Maindata = storage.LoadData()
   ui.PrintHeader()
   for {
     ui.PrintWelcome()
@@ -22,7 +22,7 @@ func Run() {
       case 2:add()
       case 3:update()
       case 4:delete()
-      case 5:exit()
+      case 5:Exit()
     }
   }
 }
@@ -34,7 +34,7 @@ func add(){
   d.Id = genId()
   d.Name = name
   d.Createdon = time.Now()
-  maindata = append(maindata, d)
+  Maindata = append(Maindata, d)
 }
 
 func update(){
@@ -43,7 +43,7 @@ func update(){
   ui.PrintWithouFormat("Enter the Task Id to Update")
   for{
     Id = ui.PrintUserInpInt("idscreen")
-    ind = findbyID(maindata,Id)
+    ind = findbyID(Maindata,Id)
     if(ind == -1){
       ui.PrintError("Task not found")
     }else{
@@ -55,10 +55,10 @@ func update(){
 
   switch(flag){
     case 1: name := ui.PrintUserInpString("Enter the Task Name to Update","Task Name Updated Successfully")
-            maindata[ind].Name = name
+            Maindata[ind].Name = name
     case 2: name := ui.PrintUserInpString("Enter the Task Description to Update","Task Description Updated Successfully")
-            maindata[ind].Task = name
-    case 3:maindata[ind].Completed = !maindata[ind].Completed
+            Maindata[ind].Task = name
+    case 3:Maindata[ind].Completed = !Maindata[ind].Completed
     ui.PrintMsg("Task Compiliton Status Updated Successfully")
   }
 }
@@ -70,7 +70,7 @@ func delete(){
 
   for{
     Id = ui.PrintUserInpInt("idscreen")
-    ind = findbyID(maindata,Id)
+    ind = findbyID(Maindata,Id)
 
     if(ind == -1){
       ui.PrintError("Task not found")
@@ -78,18 +78,19 @@ func delete(){
       break
     }
   }
-    maindata = append(maindata[:ind],maindata[ind+1:]...)
+    Maindata = append(Maindata[:ind],Maindata[ind+1:]...)
   ui.PrintMsg("Task deleted successfully")
 
 }
 
 func list(){
-  ui.PrintList(maindata)
+  ui.PrintList(Maindata)
   ui.PrintMsg("")
 }
 
-func exit(){
-  storage.SaveData(maindata)
+func Exit(){
+  ui.PrintWithouFormat("")
+  storage.SaveData(Maindata)
   ui.PrintExit()
   os.Exit(0)
 }
